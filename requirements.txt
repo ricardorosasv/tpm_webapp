@@ -5,3 +5,5 @@ django-dotenv
 pandas
 numpy
 matplotlib
+django-storages
+boto3
