@@ -154,6 +154,17 @@ USE_TZ = True
 
 #STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static", # os.path.join(BASE_DIR, 'static')
+]
+
+STATIC_ROOT = BASE_DIR / "staticfiles-cdn" # in production, we want cdn
+
+
+MEDIA_ROOT = BASE_DIR / "staticfiles-cdn" / "uploads"
+
+
 from .cdn.conf import * #noqa
 
 # Extra places for collectstatic to find static files.
