@@ -19,6 +19,7 @@ from django.urls import path
 from main_app import views as ma_views
 from mantt import views as mt
 from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -55,9 +56,10 @@ urlpatterns = [
     path('mantenimiento/transacciones/alta-realiza-mant-2/<int:plan_mant>',mt.alta_realiza_mant_2, name='alta_realiza_mant_2'),
     path('mantenimiento/transacciones/reporte-mantenimientos',mt.graficos, name='graficos'),
 ]
-
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 #Configuración para cargar imágenes
-
+'''
 if settings.DEBUG:
     from django.conf.urls.static import static
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    '''
