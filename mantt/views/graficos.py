@@ -4,10 +4,12 @@ from datetime import datetime, timedelta
 import pandas as pd
 import matplotlib.pyplot as plt
 from pathlib import Path
+from django.conf import settings as django_settings
+import os
 #from django.conf.urls.static import static
 
 def graficos(request):
-    ruta = Path(r'C:\proyectos_prog\tpm_webapp\main_app\static\images\reportes_mant')
+    ruta = os.path.join(django_settings.STATICFILES_DIRS[0],f'images/reportes_mant')
     planes = Plan_mant.objects.all().values()
     realizados = Realiza_mant.objects.all().values()
     hoy = datetime.today().strftime('%Y-%m-%d')
@@ -32,7 +34,7 @@ def graficos(request):
     ax1.pie(sizes, labels=labels, autopct='%1.1f%%',
             shadow=True, startangle=90)
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-    plt.savefig(ruta /'foo2.png')
+    plt.savefig(os.path.join(ruta,f'foo3.png'))
     plt.close()
     return render(request,'Transacciones/Graficos/rep_graficos.html',{
         'mants':df_mants,

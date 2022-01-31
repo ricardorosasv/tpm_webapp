@@ -160,7 +160,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 from .cdn.conf import * # noqa
 
 # Extra places for collectstatic to find static files.
@@ -168,5 +171,6 @@ from .cdn.conf import * # noqa
 #    os.path.join(BASE_DIR, 'static'),
 #)
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
